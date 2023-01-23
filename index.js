@@ -1,7 +1,7 @@
-var fileGenerator = require("./fileGenerator");
 var fs = require("fs")
 var inquirer = require('inquirer');
-
+var path = require('path');
+var fileGenerator = require("./fileGenerator");
 // User questions //
 let questions = [
     {
@@ -11,7 +11,12 @@ let questions = [
     },
     {
         type: "input",
-        message: "What is yourGthub user name?",
+        message: "Please describe the userStory?",
+        name: "userStory"
+    },
+    {
+        type: "input",
+        message: "What is your Github username?",
         name: "username"
     },
     {
@@ -23,7 +28,7 @@ let questions = [
         type: "input",
         message: "What is the link to the repo for this ReadMe?",
         name: "GitHUb"
-    },
+     },
     {
         type: "input",
         message: "What is your email address?",
@@ -31,20 +36,20 @@ let questions = [
     },
     {
         type: "list",
-        message: "CAn anyone contribute?",
+        message: "Can anyone contribute?",
         choices: [
             "yes",
             "No"
         ],
     },
-    {
-        type: "input",
-        message: "Please describe the app/assignment or project",
-        name: "Describe"
+     {
+         type: "input",
+         message: "Please describe the app/assignment or project",
+         name: "description"
     },
-    {
-        type: "input",
-        message: "Please list what technology was used to create this app/assigment or project",
+     {
+    type: "input",
+       message: "Please list what technology was used to create this app/assigment or project",
         name: "technology"
     },
     {
@@ -61,22 +66,24 @@ let questions = [
         name: "Describe"
     },
     {
-        type: "input",
-        message: "Do you need to list any license?",
-        name: "license"
-    }
+        type: "list",
+        message: "Please select the Licence",
+        choices: [
+            "yes",
+            "No"
+        ],
+    },
 ];
 
-//funciton to write the ReadMe.md file. //
-inquirer.prompt(questions).then(function(response) {
- console.log(response);
+ {
+    return fs.writeFileSync(path.join(process.cwd(), file), userData)
+}
 
- var content = fileGenerator(response);
- console.log(content);
+function start() {
+    inquirer.prompt(questions).then((res) => {
+        console.log('writing readme, please wait')
+        writeNewFile('README.md', fileGenerator({ ...res }))
+    })
+}
 
- fs.writeFile("./ReadMe.md", content, function(err) {
-    if (err) throw err
-    console.log("success");
-    
-  });
-});
+start();

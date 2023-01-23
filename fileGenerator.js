@@ -1,5 +1,5 @@
 function fileGenerator(response) {
-    varcontent = `# ${response.title}
+    return `# ${response.title}
     
     
     ## Table of Contents
@@ -41,7 +41,7 @@ function fileGenerator(response) {
 
     ##CONTACT ME
     ***
-    ### [${response.userName}](${response.GitHub}) [Email me](${response.email})`
+    ### ${response.username}${response.GitHub} [Email me]${response.email}`
 };
 
-module.export = fileGenerator;
+module.exports = fileGenerator;
