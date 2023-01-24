@@ -11,8 +11,8 @@ let questions = [
     },
     {
         type: "input",
-        message: "Please describe the userStory?",
-        name: "userStory"
+        message: "What is the link to the Repo?",
+        name: "repo"
     },
     {
         type: "input",
@@ -21,28 +21,25 @@ let questions = [
     },
     {
         type: "input",
-        message: "What is the link to your github?",
+        message: "What is the link to your Github?",
         name: "GitHub"
     },
     {
         type: "input",
-        message: "What is the link to the repo for this ReadMe?",
-        name: "GitHUb"
-     },
+        message: "What technology did you use?",
+        name: "technology"
+    },
     {
         type: "input",
         message: "What is your email address?",
         name: "email"
     },
     {
-        type: "list",
-        message: "Can anyone contribute?",
-        choices: [
-            "yes",
-            "No"
-        ],
+        type: "input",
+        message: "What is the user story for this project?",
+        name: "userstory"
     },
-     {
+    {
          type: "input",
          message: "Please describe the app/assignment or project",
          name: "description"
@@ -52,30 +49,32 @@ let questions = [
        message: "Please list what technology was used to create this app/assigment or project",
         name: "technology"
     },
-    {
-        type: "list",
-        message: "Are there any screen shots of the app/assignment or project?",
-        name: [
-            "yes",
-            "no"
-        ],
-    },
+    // {
+    //     type: "list",
+    //     message: "Are there any screen shots of the app/assignment or project?",
+    //     name: [
+    //         "yes",
+    //         "no"
+    //     ],
+    // },
     {
         type: "input",
         message: "Are there any future iterations?",
-        name: "Describe"
+        name: "future"
+    },
+     {
+        type: "input",
+        message: "Do you need to list any licenses?",
+        name: "license"
     },
     {
-        type: "list",
-        message: "Please select the Licence",
-        choices: [
-            "yes",
-            "No"
-        ],
-    },
+        type: "input",
+        message: "Who can contribute?",
+        name: "contribute"
+    }
 ];
 
- {
+function writeNewFile(file, userData) {
     return fs.writeFileSync(path.join(process.cwd(), file), userData)
 }
 
