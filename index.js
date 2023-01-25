@@ -49,14 +49,7 @@ let questions = [
        message: "Please list what technology was used to create this app/assigment or project",
         name: "technology"
     },
-    // {
-    //     type: "list",
-    //     message: "Are there any screen shots of the app/assignment or project?",
-    //     name: [
-    //         "yes",
-    //         "no"
-    //     ],
-    // },
+   
     {
         type: "input",
         message: "Are there any future iterations?",
